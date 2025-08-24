@@ -1,0 +1,88 @@
+{
+  "kind": "collectionType",
+  "collectionName": "announcement_cards",
+  "info": {
+    "singularName": "announcement-card",
+    "pluralName": "announcement-cards",
+    "displayName": "Announcement Card"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "message": {
+      "type": "string",
+      "required": true
+    },
+    "link": {
+      "type": "string",
+      "required": true
+    },
+    "linkAText": {
+      "type": "string",
+      "required": true
+    },
+    "cardType": {
+      "type": "enumeration",
+      "required": true,
+      "default": "announcementCard",
+      "enum": [
+        "dealCard",
+        "announcementCard",
+        "contentCard",
+        "recommendedBrandCard"
+      ]
+    },
+    "feedType": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "home",
+        "deals",
+        "wallet"
+      ]
+    },
+    "messageApiId": {
+      "type": "string",
+      "required": true
+    },
+    "messageName": {
+      "type": "string",
+      "required": true
+    },
+    "analyticsName": {
+      "type": "string",
+      "required": true
+    },
+    "ctaEn": {
+      "type": "string",
+      "required": true
+    },
+    "ctaAr": {
+      "type": "string",
+      "required": true
+    },
+    "backgroundColor": {
+      "type": "string",
+      "required": true
+    },
+    "ctaBackgroundColor": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    }
+  }
+}
