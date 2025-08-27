@@ -397,6 +397,7 @@ export interface ApiAnnouncementCardAnnouncementCard
       Schema.Attribute.Private;
     ctaAr: Schema.Attribute.String & Schema.Attribute.Required;
     ctaBackgroundColor: Schema.Attribute.String & Schema.Attribute.Required;
+    ctaBackgroundTextColor: Schema.Attribute.String & Schema.Attribute.Required;
     ctaEn: Schema.Attribute.String & Schema.Attribute.Required;
     feedType: Schema.Attribute.Enumeration<['home', 'deals', 'wallet']> &
       Schema.Attribute.Required;

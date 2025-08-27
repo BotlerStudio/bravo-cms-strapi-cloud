@@ -83,6 +83,10 @@
         "images",
         "files"
       ]
+    },
+    "ctaBackgroundTextColor": {
+      "type": "string",
+      "required": true
     }
   }
 }
