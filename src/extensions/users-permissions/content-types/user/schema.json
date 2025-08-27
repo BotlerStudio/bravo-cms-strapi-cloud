@@ -94,8 +94,9 @@
       "type": "string",
       "required": true
     },
-    "userProvider": {
+    "photo": {
       "type": "string",
+      "default": "https://wasla-providers-images.s3.eu-central-1.amazonaws.com/DefaultProfileImages",
       "required": true
     }
   }

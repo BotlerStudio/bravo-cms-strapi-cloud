@@ -911,6 +911,9 @@ export interface PluginUsersPermissionsUser
     phoneNumberVerified: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<false>;
+    photo: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'https://wasla-providers-images.s3.eu-central-1.amazonaws.com/DefaultProfileImages'>;
     provider: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     resetPasswordToken: Schema.Attribute.String & Schema.Attribute.Private;
@@ -930,7 +933,6 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 3;
       }>;
-    userProvider: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
