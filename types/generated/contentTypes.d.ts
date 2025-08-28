@@ -415,10 +415,48 @@ export interface ApiAnnouncementCardAnnouncementCard
     messageApiId: Schema.Attribute.String & Schema.Attribute.Required;
     messageName: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    targeting_rules: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::targeting-rule.targeting-rule'
+    >;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTargetingRuleTargetingRule
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'targeting_rules';
+  info: {
+    displayName: 'Targeting Rule';
+    pluralName: 'targeting-rules';
+    singularName: 'targeting-rule';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    announcement_cards: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::announcement-card.announcement-card'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::targeting-rule.targeting-rule'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    userIds: Schema.Attribute.JSON & Schema.Attribute.Required;
   };
 }
 
@@ -948,6 +986,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::announcement-card.announcement-card': ApiAnnouncementCardAnnouncementCard;
+      'api::targeting-rule.targeting-rule': ApiTargetingRuleTargetingRule;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

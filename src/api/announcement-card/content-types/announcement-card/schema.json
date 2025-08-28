@@ -87,6 +87,12 @@
     "ctaBackgroundTextColor": {
       "type": "string",
       "required": true
+    },
+    "targeting_rules": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::targeting-rule.targeting-rule",
+      "inversedBy": "announcement_cards"
     }
   }
 }

@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "targeting_rules",
+  "info": {
+    "singularName": "targeting-rule",
+    "pluralName": "targeting-rules",
+    "displayName": "Targeting Rule"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "userIds": {
+      "type": "json",
+      "required": true
+    },
+    "announcement_cards": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::announcement-card.announcement-card",
+      "mappedBy": "targeting_rules"
+    }
+  }
+}
