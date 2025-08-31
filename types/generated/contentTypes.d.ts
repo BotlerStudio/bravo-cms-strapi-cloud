@@ -401,7 +401,7 @@ export interface ApiAnnouncementCardAnnouncementCard
     ctaEn: Schema.Attribute.String & Schema.Attribute.Required;
     feedType: Schema.Attribute.Enumeration<['home', 'deals', 'wallet']> &
       Schema.Attribute.Required;
-    image: Schema.Attribute.Media<'images' | 'files', true> &
+    image: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;
     link: Schema.Attribute.String & Schema.Attribute.Required;
     linkAText: Schema.Attribute.String & Schema.Attribute.Required;
