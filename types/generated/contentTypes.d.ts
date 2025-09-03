@@ -426,6 +426,101 @@ export interface ApiAnnouncementCardAnnouncementCard
   };
 }
 
+export interface ApiSeasonalDealCardSeasonalDealCard
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'seasonal_deal_cards';
+  info: {
+    displayName: 'Seasonal Deal Card';
+    pluralName: 'seasonal-deal-cards';
+    singularName: 'seasonal-deal-card';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    analyticsName: Schema.Attribute.String & Schema.Attribute.Required;
+    brandLogo: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    > &
+      Schema.Attribute.Required;
+    cardType: Schema.Attribute.Enumeration<
+      ['dealCard', 'announcementCard', 'contentCard']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'dealCard'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    dealId: Schema.Attribute.String;
+    dealType: Schema.Attribute.Enumeration<
+      ['Cashback', 'Discount', 'PriceDrop']
+    > &
+      Schema.Attribute.Required;
+    feedType: Schema.Attribute.Enumeration<['home', 'deals']> &
+      Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::seasonal-deal-card.seasonal-deal-card'
+    > &
+      Schema.Attribute.Private;
+    merchantId: Schema.Attribute.String;
+    message: Schema.Attribute.String & Schema.Attribute.Required;
+    messageApiId: Schema.Attribute.String & Schema.Attribute.Required;
+    messageName: Schema.Attribute.String & Schema.Attribute.Required;
+    newPrice: Schema.Attribute.String;
+    oldPrice: Schema.Attribute.String;
+    productPrice: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    seasonal_deal_section_title: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::seasonal-deal-section-title.seasonal-deal-section-title'
+    >;
+    targeting_rules: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::targeting-rule.targeting-rule'
+    >;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSeasonalDealSectionTitleSeasonalDealSectionTitle
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'seasonal_deal_section_titles';
+  info: {
+    displayName: 'Seasonal Deal Section Title';
+    pluralName: 'seasonal-deal-section-titles';
+    singularName: 'seasonal-deal-section-title';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::seasonal-deal-section-title.seasonal-deal-section-title'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    seasonal_deal_cards: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::seasonal-deal-card.seasonal-deal-card'
+    >;
+    sectionTitleAr: Schema.Attribute.String & Schema.Attribute.Required;
+    sectionTitleEn: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiTargetingRuleTargetingRule
   extends Struct.CollectionTypeSchema {
   collectionName: 'targeting_rules';
@@ -453,6 +548,10 @@ export interface ApiTargetingRuleTargetingRule
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    seasonal_deal_cards: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::seasonal-deal-card.seasonal-deal-card'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -986,6 +1085,8 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::announcement-card.announcement-card': ApiAnnouncementCardAnnouncementCard;
+      'api::seasonal-deal-card.seasonal-deal-card': ApiSeasonalDealCardSeasonalDealCard;
+      'api::seasonal-deal-section-title.seasonal-deal-section-title': ApiSeasonalDealSectionTitleSeasonalDealSectionTitle;
       'api::targeting-rule.targeting-rule': ApiTargetingRuleTargetingRule;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

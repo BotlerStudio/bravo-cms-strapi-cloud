@@ -1,12 +1,12 @@
 'use strict';
 
 /**
- * announcement-card controller
+ * seasonal-deal-card controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::announcement-card.announcement-card', ({ strapi }) => ({
+module.exports = createCoreController('api::seasonal-deal-card.seasonal-deal-card', ({ strapi }) => ({
 
     async find(ctx) {
         const userId = ctx.state.user.userId;
@@ -16,7 +16,7 @@ module.exports = createCoreController('api::announcement-card.announcement-card'
             query: {
                 ...ctx.query,
                 populate: {
-                    image: true,
+                    brandLogo: true,
                     targeting_rules: {
                         fields: ['name', 'userIds'],
                     },

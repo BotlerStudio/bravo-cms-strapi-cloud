@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "seasonal_deal_section_titles",
+  "info": {
+    "singularName": "seasonal-deal-section-title",
+    "pluralName": "seasonal-deal-section-titles",
+    "displayName": "Seasonal Deal Section Title"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "sectionTitleEn": {
+      "type": "string",
+      "required": true
+    },
+    "sectionTitleAr": {
+      "type": "string",
+      "required": true
+    },
+    "seasonal_deal_cards": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::seasonal-deal-card.seasonal-deal-card",
+      "mappedBy": "seasonal_deal_section_title"
+    }
+  }
+}

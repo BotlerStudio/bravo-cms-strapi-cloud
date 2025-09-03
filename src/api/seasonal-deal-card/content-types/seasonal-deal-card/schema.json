@@ -1,0 +1,100 @@
+{
+  "kind": "collectionType",
+  "collectionName": "seasonal_deal_cards",
+  "info": {
+    "singularName": "seasonal-deal-card",
+    "pluralName": "seasonal-deal-cards",
+    "displayName": "Seasonal Deal Card"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "message": {
+      "type": "string",
+      "required": true
+    },
+    "cardType": {
+      "type": "enumeration",
+      "required": true,
+      "default": "dealCard",
+      "enum": [
+        "dealCard",
+        "announcementCard",
+        "contentCard"
+      ]
+    },
+    "feedType": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "home",
+        "deals"
+      ]
+    },
+    "messageApiId": {
+      "type": "string",
+      "required": true
+    },
+    "messageName": {
+      "type": "string",
+      "required": true
+    },
+    "analyticsName": {
+      "type": "string",
+      "required": true
+    },
+    "brandLogo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "dealType": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "Cashback",
+        "Discount",
+        "PriceDrop"
+      ]
+    },
+    "dealId": {
+      "type": "string"
+    },
+    "merchantId": {
+      "type": "string"
+    },
+    "oldPrice": {
+      "type": "string"
+    },
+    "newPrice": {
+      "type": "string"
+    },
+    "productPrice": {
+      "type": "string"
+    },
+    "targeting_rules": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::targeting-rule.targeting-rule",
+      "inversedBy": "seasonal_deal_cards"
+    },
+    "seasonal_deal_section_title": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::seasonal-deal-section-title.seasonal-deal-section-title",
+      "inversedBy": "seasonal_deal_cards"
+    }
+  }
+}
