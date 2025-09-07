@@ -20,6 +20,10 @@ module.exports = createCoreController('api::seasonal-deal-card.seasonal-deal-car
                     targeting_rules: {
                         fields: ['name', 'userIds'],
                     },
+                    seasonal_deal_section_title: {
+                        fields: ['sectionTitleAr', 'sectionTitleEn'],
+                    },
+
                 },
             },
         });

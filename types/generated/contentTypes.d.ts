@@ -458,6 +458,8 @@ export interface ApiSeasonalDealCardSeasonalDealCard
       Schema.Attribute.Required;
     feedType: Schema.Attribute.Enumeration<['home', 'deals']> &
       Schema.Attribute.Required;
+    link: Schema.Attribute.String & Schema.Attribute.Required;
+    linkAText: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

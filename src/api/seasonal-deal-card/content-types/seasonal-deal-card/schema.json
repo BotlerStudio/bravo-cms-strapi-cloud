@@ -19,6 +19,14 @@
       "type": "string",
       "required": true
     },
+    "link": {
+      "type": "string",
+      "required": true
+    },
+    "linkAText": {
+      "type": "string",
+      "required": true
+    },
     "cardType": {
       "type": "enumeration",
       "required": true,
