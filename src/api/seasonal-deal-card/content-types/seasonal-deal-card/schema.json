@@ -57,6 +57,15 @@
       "type": "string",
       "required": true
     },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
     "brandLogo": {
       "type": "media",
       "multiple": false,

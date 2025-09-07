@@ -17,6 +17,7 @@ module.exports = createCoreController('api::seasonal-deal-card.seasonal-deal-car
                 ...ctx.query,
                 populate: {
                     brandLogo: true,
+                    image: true,
                     targeting_rules: {
                         fields: ['name', 'userIds'],
                     },
