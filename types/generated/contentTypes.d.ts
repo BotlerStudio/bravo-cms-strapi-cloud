@@ -448,7 +448,8 @@ export interface ApiContentCardContentCard extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    feedType: Schema.Attribute.Enumeration<['home', 'deals', 'wallet']>;
+    feedType: Schema.Attribute.Enumeration<['home', 'deals', 'wallet']> &
+      Schema.Attribute.Required;
     image: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;
     link: Schema.Attribute.String & Schema.Attribute.Required;

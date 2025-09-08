@@ -39,6 +39,7 @@
     },
     "feedType": {
       "type": "enumeration",
+      "required": true,
       "enum": [
         "home",
         "deals",
