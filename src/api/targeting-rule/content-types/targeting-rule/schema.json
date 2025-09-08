@@ -30,6 +30,12 @@
       "relation": "manyToMany",
       "target": "api::seasonal-deal-card.seasonal-deal-card",
       "mappedBy": "targeting_rules"
+    },
+    "content_cards": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::content-card.content-card",
+      "mappedBy": "targeting_rules"
     }
   }
 }

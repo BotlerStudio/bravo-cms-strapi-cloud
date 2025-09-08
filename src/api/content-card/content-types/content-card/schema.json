@@ -1,0 +1,93 @@
+{
+  "kind": "collectionType",
+  "collectionName": "content_cards",
+  "info": {
+    "singularName": "content-card",
+    "pluralName": "content-cards",
+    "displayName": "Content Card"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "message": {
+      "type": "string",
+      "required": true
+    },
+    "link": {
+      "type": "string",
+      "required": true
+    },
+    "linkAText": {
+      "type": "string"
+    },
+    "cardType": {
+      "type": "enumeration",
+      "required": true,
+      "default": "contentCard",
+      "enum": [
+        "dealCard",
+        "announcementCard",
+        "contentCard",
+        "recommendedBrandCard"
+      ]
+    },
+    "feedType": {
+      "type": "enumeration",
+      "enum": [
+        "home",
+        "deals",
+        "wallet"
+      ]
+    },
+    "messageApiId": {
+      "type": "string",
+      "required": true
+    },
+    "messageName": {
+      "type": "string",
+      "required": true
+    },
+    "analyticsName": {
+      "type": "string",
+      "required": true
+    },
+    "sectionTitleEn": {
+      "type": "string",
+      "required": true
+    },
+    "sectionTitleAr": {
+      "type": "string",
+      "required": true
+    },
+    "brandLogo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "targeting_rules": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::targeting-rule.targeting-rule",
+      "inversedBy": "content_cards"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    }
+  }
+}

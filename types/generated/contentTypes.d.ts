@@ -426,6 +426,56 @@ export interface ApiAnnouncementCardAnnouncementCard
   };
 }
 
+export interface ApiContentCardContentCard extends Struct.CollectionTypeSchema {
+  collectionName: 'content_cards';
+  info: {
+    displayName: 'Content Card';
+    pluralName: 'content-cards';
+    singularName: 'content-card';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    analyticsName: Schema.Attribute.String & Schema.Attribute.Required;
+    brandLogo: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
+    cardType: Schema.Attribute.Enumeration<
+      ['dealCard', 'announcementCard', 'contentCard', 'recommendedBrandCard']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'contentCard'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    feedType: Schema.Attribute.Enumeration<['home', 'deals', 'wallet']>;
+    image: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
+    link: Schema.Attribute.String & Schema.Attribute.Required;
+    linkAText: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::content-card.content-card'
+    > &
+      Schema.Attribute.Private;
+    message: Schema.Attribute.String & Schema.Attribute.Required;
+    messageApiId: Schema.Attribute.String & Schema.Attribute.Required;
+    messageName: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    sectionTitleAr: Schema.Attribute.String & Schema.Attribute.Required;
+    sectionTitleEn: Schema.Attribute.String & Schema.Attribute.Required;
+    targeting_rules: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::targeting-rule.targeting-rule'
+    >;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiSeasonalDealCardSeasonalDealCard
   extends Struct.CollectionTypeSchema {
   collectionName: 'seasonal_deal_cards';
@@ -540,6 +590,10 @@ export interface ApiTargetingRuleTargetingRule
     announcement_cards: Schema.Attribute.Relation<
       'manyToMany',
       'api::announcement-card.announcement-card'
+    >;
+    content_cards: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::content-card.content-card'
     >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1089,6 +1143,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::announcement-card.announcement-card': ApiAnnouncementCardAnnouncementCard;
+      'api::content-card.content-card': ApiContentCardContentCard;
       'api::seasonal-deal-card.seasonal-deal-card': ApiSeasonalDealCardSeasonalDealCard;
       'api::seasonal-deal-section-title.seasonal-deal-section-title': ApiSeasonalDealSectionTitleSeasonalDealSectionTitle;
       'api::targeting-rule.targeting-rule': ApiTargetingRuleTargetingRule;
