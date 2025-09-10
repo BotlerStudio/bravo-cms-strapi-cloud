@@ -71,10 +71,6 @@
       "type": "string",
       "required": true
     },
-    "ctaBackgroundColor": {
-      "type": "string",
-      "required": true
-    },
     "image": {
       "type": "media",
       "multiple": false,
@@ -84,15 +80,15 @@
         "files"
       ]
     },
-    "ctaBackgroundTextColor": {
-      "type": "string",
-      "required": true
-    },
     "targeting_rules": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::targeting-rule.targeting-rule",
       "inversedBy": "announcement_cards"
+    },
+    "ctaBackgroundTextColor": {
+      "type": "string",
+      "required": true
     }
   }
 }
