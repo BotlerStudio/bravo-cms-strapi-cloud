@@ -58,14 +58,6 @@
       "type": "string",
       "required": true
     },
-    "sectionTitleEn": {
-      "type": "string",
-      "required": true
-    },
-    "sectionTitleAr": {
-      "type": "string",
-      "required": true
-    },
     "brandLogo": {
       "type": "media",
       "multiple": false,
@@ -89,6 +81,12 @@
         "images",
         "files"
       ]
+    },
+    "content_card_section_title": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::content-card-section-title.content-card-section-title",
+      "inversedBy": "content_cards"
     }
   }
 }

@@ -425,6 +425,40 @@ export interface ApiAnnouncementCardAnnouncementCard
   };
 }
 
+export interface ApiContentCardSectionTitleContentCardSectionTitle
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'content_card_section_titles';
+  info: {
+    displayName: 'Content Card Section Title';
+    pluralName: 'content-card-section-titles';
+    singularName: 'content-card-section-title';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content_cards: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::content-card.content-card'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::content-card-section-title.content-card-section-title'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    sectionTitleAr: Schema.Attribute.String & Schema.Attribute.Required;
+    sectionTitleEn: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiContentCardContentCard extends Struct.CollectionTypeSchema {
   collectionName: 'content_cards';
   info: {
@@ -444,6 +478,10 @@ export interface ApiContentCardContentCard extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'contentCard'>;
+    content_card_section_title: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::content-card-section-title.content-card-section-title'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -463,8 +501,6 @@ export interface ApiContentCardContentCard extends Struct.CollectionTypeSchema {
     messageApiId: Schema.Attribute.String & Schema.Attribute.Required;
     messageName: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    sectionTitleAr: Schema.Attribute.String & Schema.Attribute.Required;
-    sectionTitleEn: Schema.Attribute.String & Schema.Attribute.Required;
     targeting_rules: Schema.Attribute.Relation<
       'manyToMany',
       'api::targeting-rule.targeting-rule'
@@ -1143,6 +1179,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::announcement-card.announcement-card': ApiAnnouncementCardAnnouncementCard;
+      'api::content-card-section-title.content-card-section-title': ApiContentCardSectionTitleContentCardSectionTitle;
       'api::content-card.content-card': ApiContentCardContentCard;
       'api::seasonal-deal-card.seasonal-deal-card': ApiSeasonalDealCardSeasonalDealCard;
       'api::seasonal-deal-section-title.seasonal-deal-section-title': ApiSeasonalDealSectionTitleSeasonalDealSectionTitle;

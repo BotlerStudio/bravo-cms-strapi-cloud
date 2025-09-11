@@ -21,6 +21,9 @@ module.exports = createCoreController('api::content-card.content-card', ({ strap
                     targeting_rules: {
                         fields: ['name', 'userIds'],
                     },
+                    content_card_section_title: {
+                        fields: ['sectionTitleEn', 'sectionTitleAr'],
+                    },
                 },
             },
         });
