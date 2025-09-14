@@ -15,7 +15,15 @@
       "type": "string",
       "required": true
     },
+    "titleAr": {
+      "type": "string",
+      "required": true
+    },
     "message": {
+      "type": "string",
+      "required": true
+    },
+    "messageAr": {
       "type": "string",
       "required": true
     },

@@ -412,6 +412,7 @@ export interface ApiAnnouncementCardAnnouncementCard
       Schema.Attribute.Private;
     message: Schema.Attribute.String & Schema.Attribute.Required;
     messageApiId: Schema.Attribute.String & Schema.Attribute.Required;
+    messageAr: Schema.Attribute.String & Schema.Attribute.Required;
     messageName: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     targeting_rules: Schema.Attribute.Relation<
@@ -419,6 +420,7 @@ export interface ApiAnnouncementCardAnnouncementCard
       'api::targeting-rule.targeting-rule'
     >;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    titleAr: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -499,6 +501,7 @@ export interface ApiContentCardContentCard extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     message: Schema.Attribute.String & Schema.Attribute.Required;
     messageApiId: Schema.Attribute.String & Schema.Attribute.Required;
+    messageAr: Schema.Attribute.String & Schema.Attribute.Required;
     messageName: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     targeting_rules: Schema.Attribute.Relation<
@@ -506,6 +509,7 @@ export interface ApiContentCardContentCard extends Struct.CollectionTypeSchema {
       'api::targeting-rule.targeting-rule'
     >;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    titleAr: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -557,6 +561,7 @@ export interface ApiSeasonalDealCardSeasonalDealCard
     merchantId: Schema.Attribute.String;
     message: Schema.Attribute.String & Schema.Attribute.Required;
     messageApiId: Schema.Attribute.String & Schema.Attribute.Required;
+    messageAr: Schema.Attribute.String & Schema.Attribute.Required;
     messageName: Schema.Attribute.String & Schema.Attribute.Required;
     newPrice: Schema.Attribute.String;
     oldPrice: Schema.Attribute.String;
@@ -571,6 +576,7 @@ export interface ApiSeasonalDealCardSeasonalDealCard
       'api::targeting-rule.targeting-rule'
     >;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    titleAr: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
