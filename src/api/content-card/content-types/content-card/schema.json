@@ -95,6 +95,9 @@
       "relation": "manyToOne",
       "target": "api::content-card-section-title.content-card-section-title",
       "inversedBy": "content_cards"
+    },
+    "campaignName": {
+      "type": "string"
     }
   }
 }

@@ -97,6 +97,10 @@
     "ctaBackgroundTextColor": {
       "type": "string",
       "required": true
+    },
+    "campaignName": {
+      "type": "string",
+      "required": true
     }
   }
 }

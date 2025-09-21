@@ -387,6 +387,7 @@ export interface ApiAnnouncementCardAnnouncementCard
   attributes: {
     analyticsName: Schema.Attribute.String & Schema.Attribute.Required;
     backgroundColor: Schema.Attribute.String & Schema.Attribute.Required;
+    campaignName: Schema.Attribute.String & Schema.Attribute.Required;
     cardType: Schema.Attribute.Enumeration<
       ['dealCard', 'announcementCard', 'contentCard', 'recommendedBrandCard']
     > &
@@ -475,6 +476,7 @@ export interface ApiContentCardContentCard extends Struct.CollectionTypeSchema {
     analyticsName: Schema.Attribute.String & Schema.Attribute.Required;
     brandLogo: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;
+    campaignName: Schema.Attribute.String;
     cardType: Schema.Attribute.Enumeration<
       ['dealCard', 'announcementCard', 'contentCard', 'recommendedBrandCard']
     > &
@@ -533,6 +535,7 @@ export interface ApiSeasonalDealCardSeasonalDealCard
       'images' | 'files' | 'videos' | 'audios'
     > &
       Schema.Attribute.Required;
+    campaignName: Schema.Attribute.String;
     cardType: Schema.Attribute.Enumeration<
       ['dealCard', 'announcementCard', 'contentCard']
     > &

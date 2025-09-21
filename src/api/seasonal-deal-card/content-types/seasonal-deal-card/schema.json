@@ -120,6 +120,9 @@
       "relation": "manyToOne",
       "target": "api::seasonal-deal-section-title.seasonal-deal-section-title",
       "inversedBy": "seasonal_deal_cards"
+    },
+    "campaignName": {
+      "type": "string"
     }
   }
 }
