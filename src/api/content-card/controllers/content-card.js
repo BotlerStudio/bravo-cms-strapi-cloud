@@ -24,6 +24,9 @@ module.exports = createCoreController('api::content-card.content-card', ({ strap
                     content_card_section_title: {
                         fields: ['sectionTitleEn', 'sectionTitleAr'],
                     },
+                    card_tags: {
+                        fields: ['title'],
+                    }
                 },
             },
         });

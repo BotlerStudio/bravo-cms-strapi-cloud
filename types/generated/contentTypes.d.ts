@@ -388,6 +388,10 @@ export interface ApiAnnouncementCardAnnouncementCard
     analyticsName: Schema.Attribute.String & Schema.Attribute.Required;
     backgroundColor: Schema.Attribute.String & Schema.Attribute.Required;
     campaignName: Schema.Attribute.String & Schema.Attribute.Required;
+    card_tags: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::card-tag.card-tag'
+    >;
     cardType: Schema.Attribute.Enumeration<
       ['dealCard', 'announcementCard', 'contentCard', 'recommendedBrandCard']
     > &
@@ -422,6 +426,46 @@ export interface ApiAnnouncementCardAnnouncementCard
     >;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     titleAr: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiCardTagCardTag extends Struct.CollectionTypeSchema {
+  collectionName: 'card_tags';
+  info: {
+    displayName: 'Card Tag';
+    pluralName: 'card-tags';
+    singularName: 'card-tag';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    announcement_cards: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::announcement-card.announcement-card'
+    >;
+    content_cards: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::content-card.content-card'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::card-tag.card-tag'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    seasonal_deal_cards: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::seasonal-deal-card.seasonal-deal-card'
+    >;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -477,6 +521,10 @@ export interface ApiContentCardContentCard extends Struct.CollectionTypeSchema {
     brandLogo: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;
     campaignName: Schema.Attribute.String;
+    card_tags: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::card-tag.card-tag'
+    >;
     cardType: Schema.Attribute.Enumeration<
       ['dealCard', 'announcementCard', 'contentCard', 'recommendedBrandCard']
     > &
@@ -536,6 +584,10 @@ export interface ApiSeasonalDealCardSeasonalDealCard
     > &
       Schema.Attribute.Required;
     campaignName: Schema.Attribute.String;
+    card_tags: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::card-tag.card-tag'
+    >;
     cardType: Schema.Attribute.Enumeration<
       ['dealCard', 'announcementCard', 'contentCard']
     > &
@@ -1188,6 +1240,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::announcement-card.announcement-card': ApiAnnouncementCardAnnouncementCard;
+      'api::card-tag.card-tag': ApiCardTagCardTag;
       'api::content-card-section-title.content-card-section-title': ApiContentCardSectionTitleContentCardSectionTitle;
       'api::content-card.content-card': ApiContentCardContentCard;
       'api::seasonal-deal-card.seasonal-deal-card': ApiSeasonalDealCardSeasonalDealCard;

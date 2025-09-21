@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "card_tags",
+  "info": {
+    "singularName": "card-tag",
+    "pluralName": "card-tags",
+    "displayName": "Card Tag"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "announcement_cards": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::announcement-card.announcement-card",
+      "mappedBy": "card_tags"
+    },
+    "seasonal_deal_cards": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::seasonal-deal-card.seasonal-deal-card",
+      "inversedBy": "card_tags"
+    },
+    "content_cards": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::content-card.content-card",
+      "inversedBy": "card_tags"
+    }
+  }
+}

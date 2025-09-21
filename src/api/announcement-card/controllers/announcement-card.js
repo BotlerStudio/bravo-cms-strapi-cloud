@@ -20,6 +20,9 @@ module.exports = createCoreController('api::announcement-card.announcement-card'
                     targeting_rules: {
                         fields: ['name', 'userIds'],
                     },
+                    card_tags: {
+                        fields: ['title'],
+                    },
                 },
             },
         });

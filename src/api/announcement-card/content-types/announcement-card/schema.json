@@ -101,6 +101,12 @@
     "campaignName": {
       "type": "string",
       "required": true
+    },
+    "card_tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::card-tag.card-tag",
+      "inversedBy": "announcement_cards"
     }
   }
 }

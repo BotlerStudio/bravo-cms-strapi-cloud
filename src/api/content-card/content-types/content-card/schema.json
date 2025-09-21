@@ -98,6 +98,12 @@
     },
     "campaignName": {
       "type": "string"
+    },
+    "card_tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::card-tag.card-tag",
+      "mappedBy": "content_cards"
     }
   }
 }

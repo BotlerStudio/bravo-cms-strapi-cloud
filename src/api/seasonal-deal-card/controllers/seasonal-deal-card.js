@@ -24,7 +24,9 @@ module.exports = createCoreController('api::seasonal-deal-card.seasonal-deal-car
                     seasonal_deal_section_title: {
                         fields: ['sectionTitleAr', 'sectionTitleEn'],
                     },
-
+                    card_tags: {
+                        fields: ['title'],
+                    }
                 },
             },
         });
