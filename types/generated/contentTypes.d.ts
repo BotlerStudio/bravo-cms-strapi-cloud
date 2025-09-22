@@ -419,6 +419,7 @@ export interface ApiAnnouncementCardAnnouncementCard
     messageApiId: Schema.Attribute.String & Schema.Attribute.Required;
     messageAr: Schema.Attribute.String & Schema.Attribute.Required;
     messageName: Schema.Attribute.String & Schema.Attribute.Required;
+    pin_card: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     publishedAt: Schema.Attribute.DateTime;
     targeting_rules: Schema.Attribute.Relation<
       'manyToMany',
@@ -553,6 +554,7 @@ export interface ApiContentCardContentCard extends Struct.CollectionTypeSchema {
     messageApiId: Schema.Attribute.String & Schema.Attribute.Required;
     messageAr: Schema.Attribute.String & Schema.Attribute.Required;
     messageName: Schema.Attribute.String & Schema.Attribute.Required;
+    pin_card: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     publishedAt: Schema.Attribute.DateTime;
     targeting_rules: Schema.Attribute.Relation<
       'manyToMany',
@@ -620,6 +622,7 @@ export interface ApiSeasonalDealCardSeasonalDealCard
     messageName: Schema.Attribute.String & Schema.Attribute.Required;
     newPrice: Schema.Attribute.String;
     oldPrice: Schema.Attribute.String;
+    pin_card: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     productPrice: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     seasonal_deal_section_title: Schema.Attribute.Relation<

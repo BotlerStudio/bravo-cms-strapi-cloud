@@ -104,6 +104,10 @@
       "relation": "manyToMany",
       "target": "api::card-tag.card-tag",
       "mappedBy": "content_cards"
+    },
+    "pin_card": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

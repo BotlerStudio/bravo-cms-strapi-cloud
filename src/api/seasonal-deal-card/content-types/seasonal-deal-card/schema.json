@@ -129,6 +129,10 @@
       "relation": "manyToMany",
       "target": "api::card-tag.card-tag",
       "mappedBy": "seasonal_deal_cards"
+    },
+    "pin_card": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

@@ -107,6 +107,10 @@
       "relation": "manyToMany",
       "target": "api::card-tag.card-tag",
       "inversedBy": "announcement_cards"
+    },
+    "pin_card": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
