@@ -403,6 +403,7 @@ export interface ApiAnnouncementCardAnnouncementCard
     ctaAr: Schema.Attribute.String & Schema.Attribute.Required;
     ctaBackgroundTextColor: Schema.Attribute.String & Schema.Attribute.Required;
     ctaEn: Schema.Attribute.String & Schema.Attribute.Required;
+    expiryDate: Schema.Attribute.DateTime & Schema.Attribute.Required;
     feedType: Schema.Attribute.Enumeration<['home', 'deals', 'wallet']> &
       Schema.Attribute.Required;
     image: Schema.Attribute.Media<'images' | 'files'> &
@@ -421,6 +422,7 @@ export interface ApiAnnouncementCardAnnouncementCard
     messageName: Schema.Attribute.String & Schema.Attribute.Required;
     pin_card: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     publishedAt: Schema.Attribute.DateTime;
+    scheduleDate: Schema.Attribute.DateTime & Schema.Attribute.Required;
     targeting_rules: Schema.Attribute.Relation<
       'manyToMany',
       'api::targeting-rule.targeting-rule'
@@ -538,6 +540,7 @@ export interface ApiContentCardContentCard extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    expiryDate: Schema.Attribute.DateTime & Schema.Attribute.Required;
     feedType: Schema.Attribute.Enumeration<['home', 'deals', 'wallet']> &
       Schema.Attribute.Required;
     image: Schema.Attribute.Media<'images' | 'files'> &
@@ -556,6 +559,7 @@ export interface ApiContentCardContentCard extends Struct.CollectionTypeSchema {
     messageName: Schema.Attribute.String & Schema.Attribute.Required;
     pin_card: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     publishedAt: Schema.Attribute.DateTime;
+    scheduleDate: Schema.Attribute.DateTime & Schema.Attribute.Required;
     targeting_rules: Schema.Attribute.Relation<
       'manyToMany',
       'api::targeting-rule.targeting-rule'
@@ -603,6 +607,7 @@ export interface ApiSeasonalDealCardSeasonalDealCard
       ['Cashback', 'Discount', 'PriceDrop']
     > &
       Schema.Attribute.Required;
+    expiryDate: Schema.Attribute.DateTime & Schema.Attribute.Required;
     feedType: Schema.Attribute.Enumeration<['home', 'deals']> &
       Schema.Attribute.Required;
     image: Schema.Attribute.Media<'images' | 'files'> &
@@ -625,6 +630,7 @@ export interface ApiSeasonalDealCardSeasonalDealCard
     pin_card: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     productPrice: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    scheduleDate: Schema.Attribute.DateTime & Schema.Attribute.Required;
     seasonal_deal_section_title: Schema.Attribute.Relation<
       'manyToOne',
       'api::seasonal-deal-section-title.seasonal-deal-section-title'

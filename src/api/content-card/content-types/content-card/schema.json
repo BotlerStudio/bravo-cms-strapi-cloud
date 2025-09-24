@@ -108,6 +108,14 @@
     "pin_card": {
       "type": "boolean",
       "default": false
+    },
+    "scheduleDate": {
+      "type": "datetime",
+      "required": true
+    },
+    "expiryDate": {
+      "type": "datetime",
+      "required": true
     }
   }
 }
