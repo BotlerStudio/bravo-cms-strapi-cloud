@@ -435,6 +435,49 @@ export interface ApiAnnouncementCardAnnouncementCard
   };
 }
 
+export interface ApiAppUserProfileAppUserProfile
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'app_user_profiles';
+  info: {
+    displayName: 'App-User-Profile';
+    pluralName: 'app-user-profiles';
+    singularName: 'app-user-profile';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    countryCode: Schema.Attribute.String & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    deviceVerified: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
+    email: Schema.Attribute.String & Schema.Attribute.Required;
+    emailVerified: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::app-user-profile.app-user-profile'
+    > &
+      Schema.Attribute.Private;
+    phoneNumber: Schema.Attribute.String;
+    phoneNumberVerified: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
+    photo: Schema.Attribute.String & Schema.Attribute.Required;
+    provider: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    userId: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface ApiCardTagCardTag extends Struct.CollectionTypeSchema {
   collectionName: 'card_tags';
   info: {
@@ -1183,21 +1226,14 @@ export interface PluginUsersPermissionsUser
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    countryCode: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    deviceVerified: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<false>;
     email: Schema.Attribute.Email &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
-    emailVerified: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1209,13 +1245,6 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
-    phoneNumber: Schema.Attribute.String & Schema.Attribute.Required;
-    phoneNumberVerified: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<false>;
-    photo: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'https://wasla-providers-images.s3.eu-central-1.amazonaws.com/DefaultProfileImages'>;
     provider: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     resetPasswordToken: Schema.Attribute.String & Schema.Attribute.Private;
@@ -1226,9 +1255,6 @@ export interface PluginUsersPermissionsUser
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    userId: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
     username: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
@@ -1249,6 +1275,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::announcement-card.announcement-card': ApiAnnouncementCardAnnouncementCard;
+      'api::app-user-profile.app-user-profile': ApiAppUserProfileAppUserProfile;
       'api::card-tag.card-tag': ApiCardTagCardTag;
       'api::content-card-section-title.content-card-section-title': ApiContentCardSectionTitleContentCardSectionTitle;
       'api::content-card.content-card': ApiContentCardContentCard;

@@ -1,0 +1,54 @@
+{
+  "kind": "collectionType",
+  "collectionName": "app_user_profiles",
+  "info": {
+    "singularName": "app-user-profile",
+    "pluralName": "app-user-profiles",
+    "displayName": "App-User-Profile"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "userId": {
+      "type": "string",
+      "required": true
+    },
+    "countryCode": {
+      "type": "string",
+      "required": true
+    },
+    "emailVerified": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "phoneNumberVerified": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "deviceVerified": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "phoneNumber": {
+      "type": "string",
+      "required": false
+    },
+    "photo": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "string",
+      "required": true
+    },
+    "provider": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
